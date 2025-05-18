@@ -11,7 +11,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
   if (!isNaN(age) && age > 0 && age <= 120) {
     // تعديل عنوان التهنئة ليشمل الاسم والعمر
-    document.getElementById('birthdayTitle').textContent = Happy Birthday ${name} 🎂;
+    document.getElementById('birthdayTitle').textContent = `Happy Birthday ${name} 🎂`;
 
     const container = document.getElementById('candlesContainer');
     const ageDigits = age.toString().split('');
@@ -22,7 +22,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
       const flame = document.createElement('div');
       flame.classList.add('flame');
-      flame.id = flame-${index};
+      flame.id = `flame-${index}`;
 
       const number = document.createTextNode(digit);
 
