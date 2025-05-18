@@ -1,0 +1,89 @@
+body {
+  text-align: center;
+  background-color: #ffe6e6;
+  font-family: Arial, sans-serif;
+}
+
+h1 {
+  color: #ff4d4d;
+  font-size: 30px;
+  margin-top: 20px;
+}
+
+h2 {
+  
+  margin-top: -40px;
+}
+.cake_img {
+  width: 500px;
+  height: auto;
+  margin-top: 150px;
+}
+
+.cake {
+  position: relative;
+  display: inline-block;
+  margin-top: -100px;
+}
+
+#candlesContainer {
+  position: absolute;
+  top: 130px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+}
+.stick1 {
+  width: 3px;
+  height: 30px;
+  background-color: #8B4513; /* Brown color for the candle stick */
+  border-radius: 5px;
+  position: relative;
+  margin-top: -460px;
+    margin-left: 233px;
+}
+
+.stick2 {
+  width: 3px;
+  height: 30px;
+  background-color: #8B4513; /* Brown color for the candle stick */
+  border-radius: 5px;
+  position: relative;
+    margin-top: -25px;
+    margin-left: 266px;
+}
+
+.candle-digit {
+  position: relative;
+  font-size: 40px;
+  font-weight: bold;
+  color: #b5651d;
+  text-shadow: 1px 1px 1px #fff;
+  width: 20px;
+  height: 80px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+
+}
+
+.flame {
+  width: 12px;
+  height: 20px;
+  background-color: orange;
+  border-radius: 50%;
+  position: absolute;
+  top: 18px;
+  left: 5px;
+  transform: translateX(-50%);
+  box-shadow: 0 0 8px orange;
+  animation: flicker 0.2s infinite;
+}
+
+@keyframes flicker {
+  0% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.6; transform: scale(1.1); }
+  100% { opacity: 1; transform: scale(1); }
+}
