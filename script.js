@@ -52,7 +52,7 @@ function startMicListener() {
         analyser.getByteFrequencyData(data);
         let volume = data.reduce((a, b) => a + b, 0) / data.length;
 
-        if (volume > 100 && !flameOff) {
+        if (volume > 50 && !flameOff) {
           document.querySelectorAll('.flame').forEach(f => f.style.display = 'none');
           flameOff = true;
         }
