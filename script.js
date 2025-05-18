@@ -1,8 +1,9 @@
 let flameOff = false;
+let audioFinished = false;
 
 window.addEventListener('DOMContentLoaded', () => {
   let name = prompt("Enter ur Name؟");
-  let age = prompt(" Enter ur age؟");
+  let age = prompt("Enter ur age؟");
   age = parseInt(age);
 
   if (!name || name.trim() === "") {
@@ -10,7 +11,6 @@ window.addEventListener('DOMContentLoaded', () => {
   }
 
   if (!isNaN(age) && age > 0 && age <= 120) {
-    // تعديل عنوان التهنئة ليشمل الاسم والعمر
     document.getElementById('birthdayTitle').textContent = `Happy Birthday ${name} 🎂`;
 
     const container = document.getElementById('candlesContainer');
@@ -34,7 +34,17 @@ window.addEventListener('DOMContentLoaded', () => {
     alert("رجاء إدخال عمر صحيح.");
   }
 
-  startMicListener();
+  // تشغيل الصوت تلقائيًا
+  const audio = document.getElementById('birthdayAudio');
+  audio.play().catch(err => {
+    console.warn("فشل تشغيل الصوت تلقائيًا: يحتاج المستخدم للنقر لتشغيله.");
+  });
+
+  // بعد انتهاء الصوت يبدأ المايك
+  audio.addEventListener('ended', () => {
+    audioFinished = true;
+    startMicListener();
+  });
 });
 
 function startMicListener() {
@@ -52,7 +62,8 @@ function startMicListener() {
         analyser.getByteFrequencyData(data);
         let volume = data.reduce((a, b) => a + b, 0) / data.length;
 
-        if (volume > 150 && !flameOff) {
+        // لا تطفي الشمع إلا إذا انتهى الصوت
+        if (volume > 150 && !flameOff && audioFinished) {
           document.querySelectorAll('.flame').forEach(f => f.style.display = 'none');
           flameOff = true;
         }
